@@ -1,29 +1,14 @@
 import React, { useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { registerRootComponent } from 'expo';
-import InventairesList from './src/screens/InventairesList';
-import InventaireDetail from './src/screens/InventaireDetail';
-import LigneInventaireForm from './src/screens/LigneInventaireForm';
-import InventaireForm from './src/screens/InventaireForm';
-import { initDB } from './src/database/db';
+import { StatusBar } from 'expo-status-bar';
+
+import { StyleSheet, Text, View } from 'react-native';
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  useEffect(() => {
-    const initializeDatabase = async () => {
-      try {
-        await initDB();
-        console.log('Database initialized');
-      } catch (error) {
-        console.error('Error initializing database:', error);
-      }
-    };
-
-    initializeDatabase();
-  }, []);
-
+  /*
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="InventairesList">
@@ -42,15 +27,26 @@ const App = () => {
           component={LigneInventaireForm}
           options={{ title: 'Ajouter une ligne d\'inventaire' }}
         />
-        <Stack.Screen
-          name="InventaireForm"
-          component={InventaireForm}
-          options={{ title: 'Ajouter un inventaire' }}
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );
+  */
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default App;
 registerRootComponent(App);
